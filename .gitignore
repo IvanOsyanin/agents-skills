@@ -1,0 +1,16 @@
+# Local secrets and credentials.
+auth.json
+credentials
+credentials.*
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# OS and Python-generated files.
+.DS_Store
+Thumbs.db
+__pycache__/
+*.py[cod]

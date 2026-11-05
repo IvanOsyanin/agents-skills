@@ -1,0 +1,4 @@
+interface:
+  display_name: "Поэтапное выполнение плана"
+  short_description: "Шаги с проверкой и коммитами"
+  default_prompt: "Используй $execute-plan для поэтапного выполнения утверждённого плана."

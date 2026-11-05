@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1520" height="1360" viewBox="0 0 1520 1360">
+<rect width="100%" height="100%" fill="white"/>
+<rect x="30" y="150" width="650" height="480" rx="10" fill="#9fc5f3" stroke="#41474b" stroke-width="1.5"/>
+<text x="355.0" y="197.0" font-family="Arial, sans-serif" font-size="25" text-anchor="middle" fill="#252b30" font-weight="700">Документы. Хранилище</text>
+<rect x="750" y="150" width="330" height="900" rx="0" fill="#ffffff" stroke="#41474b" stroke-width="1.5"/>
+<path d="M750,245h330" stroke="#41474b"/>
+<text x="915.0" y="195.0" font-family="Arial, sans-serif" font-size="23" text-anchor="middle" fill="#252b30" font-weight="700">Заявки. Портал</text>
+<rect x="1110" y="150" width="360" height="900" rx="0" fill="#ffffff" stroke="#41474b" stroke-width="1.5"/>
+<path d="M1110,245h360" stroke="#41474b"/>
+<text x="1290.0" y="195.0" font-family="Arial, sans-serif" font-size="23" text-anchor="middle" fill="#252b30" font-weight="700">Заявки. Сервис</text>
+<rect x="30" y="735" width="260" height="135" rx="10" fill="#9fc5f3" stroke="#41474b" stroke-width="1.5"/>
+<text x="160.0" y="777.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="700">Документы. Клиент</text>
+<rect x="430" y="735" width="250" height="135" rx="10" fill="#9fc5f3" stroke="#41474b" stroke-width="1.5"/>
+<text x="555.0" y="777.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="700">Документы. Сервис</text>
+<polyline points="915,350 915,375" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M919.5,364.0L915,375L910.5,364.0" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="1040,422 1095,422 1095,625 1160,625" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M1149.0,620.5L1160,625L1149.0,629.5" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="915,470 915,595" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="6 4"/>
+<path d="M919.5,584.0L915,595L910.5,584.0" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="1020,665 1160,665" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="6 4"/>
+<path d="M1149.0,660.5L1160,665L1149.0,669.5" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="1280,695 1280,765" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round" stroke-dasharray="6 4"/>
+<path d="M1284.5,754.0L1280,765L1275.5,754.0" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="1420,645 1445,645 1445,965 1315,965" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M1326.0,969.5L1315,965L1326.0,960.5" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="290,815 475,815" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M464.0,810.5L475,815L464.0,819.5" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="30,1000 200,1000" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M189.0,995.5L200,1000L189.0,1004.5" fill="#41474b" stroke="#41474b" stroke-width="1.8"/>
+<polyline points="30,1060 200,1060" fill="none" stroke="#41474b" stroke-width="1.8" stroke-linejoin="round"/>
+<path d="M189.0,1055.5L200,1060L189.0,1064.5" fill="none" stroke="#41474b" stroke-width="1.8"/>
+<text x="760.0" y="54.25" font-family="Arial, sans-serif" font-size="30" text-anchor="middle" fill="#252b30" font-weight="400">ОТАР: фигуры и связи</text>
+<text x="760.0" y="100.625" font-family="Arial, sans-serif" font-size="19" text-anchor="middle" fill="#252b30" font-weight="400">По официальным материалам • учебные фигуры, не шаблон банка • 04.11.2026</text>
+<rect x="60" y="250" width="265" height="66" rx="10" fill="#efbb96" stroke="#41474b" stroke-width="1.5"/>
+<text x="192.5" y="290.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Записать файл</text>
+<rect x="60" y="342" width="265" height="66" rx="10" fill="#efbb96" stroke="#41474b" stroke-width="1.5"/>
+<text x="192.5" y="382.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Прочитать файл</text>
+<rect x="60" y="434" width="265" height="66" rx="10" fill="#efbb96" stroke="#41474b" stroke-width="1.5"/>
+<text x="192.5" y="474.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Удалить файл</text>
+<path d="M360,260a142.5,15 0 0 1 285,0v95a142.5,15 0 0 1 -285,0z" fill="#a9c574" stroke="#41474b" stroke-width="1.5"/>
+<ellipse cx="502.5" cy="260" rx="142.5" ry="15" fill="#a9c574" stroke="#41474b" stroke-width="1.5"/>
+<text x="502.5" y="310.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">D1</text>
+<text x="502.5" y="335.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Копия файла</text>
+<path d="M360,425a142.5,15 0 0 1 285,0v95a142.5,15 0 0 1 -285,0z" fill="#a9c574" stroke="#41474b" stroke-width="1.5"/>
+<ellipse cx="502.5" cy="425" rx="142.5" ry="15" fill="#a9c574" stroke="#41474b" stroke-width="1.5"/>
+<text x="502.5" y="475.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">D2</text>
+<text x="502.5" y="500.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Метаданные файла</text>
+<text x="355.0" y="592.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Один блок — одна функция или сущность</text>
+<ellipse cx="915.0" cy="325.0" rx="25.0" ry="25.0" fill="#92ce50" stroke="#41474b" stroke-width="1.5"/>
+<text x="915.0" y="276.75" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#252b30" font-weight="400">Подать заявку</text>
+<rect x="790" y="375" width="250" height="95" rx="10" fill="#bacbdd" stroke="#41474b" stroke-width="1.5"/>
+<text x="915.0" y="430.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Отправить заявку</text>
+<path d="M810,595h188l22,22v78h-210z" fill="#8faa50" stroke="#41474b" stroke-width="1.5"/>
+<path d="M998,595v22h22" fill="none" stroke="#41474b" stroke-width="1.5"/>
+<text x="915.0" y="640.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">D3</text>
+<text x="915.0" y="665.0" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Заявка</text>
+<rect x="1160" y="595" width="260" height="100" rx="10" fill="#bacbdd" stroke="#41474b" stroke-width="1.5"/>
+<text x="1290.0" y="652.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Принять заявку</text>
+<path d="M1160,780a120.0,15 0 0 1 240,0v70a120.0,15 0 0 1 -240,0z" fill="#a9c574" stroke="#41474b" stroke-width="1.5"/>
+<ellipse cx="1280.0" cy="780" rx="120.0" ry="15" fill="#a9c574" stroke="#41474b" stroke-width="1.5"/>
+<text x="1280.0" y="817.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">D3</text>
+<text x="1280.0" y="842.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Заявка</text>
+<ellipse cx="1290.0" cy="965.0" rx="25.0" ry="25.0" fill="#e5a5a5" stroke="#41474b" stroke-width="5"/>
+<text x="1290.0" y="1024.25" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#252b30" font-weight="400">Заявка принята</text>
+<rect x="475" y="795" width="180" height="45" rx="10" fill="#efbb96" stroke="#41474b" stroke-width="1.5"/>
+<text x="565.0" y="823.875" font-family="Arial, sans-serif" font-size="17" text-anchor="middle" fill="#252b30" font-weight="400">Принять файл</text>
+<text x="355.5" y="768.25" font-family="Arial, sans-serif" font-size="17" text-anchor="middle" fill="#252b30" font-weight="400">Копия файла</text>
+<text x="355.5" y="789.5" font-family="Arial, sans-serif" font-size="17" text-anchor="middle" fill="#252b30" font-weight="400">[Принять файл]</text>
+<ellipse cx="430.0" cy="815.0" rx="12.0" ry="12.0" fill="#fff2b2" stroke="#41474b" stroke-width="1.5"/>
+<text x="430.0" y="820.625" font-family="Arial, sans-serif" font-size="15" text-anchor="middle" fill="#252b30" font-weight="400">1</text>
+<text x="355.0" y="932.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Кружок у поставщика, даже если он получает данные</text>
+<text x="455.0" y="1007.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Синхронно: заполненный наконечник</text>
+<text x="455.0" y="1067.5" font-family="Arial, sans-serif" font-size="20" text-anchor="middle" fill="#252b30" font-weight="400">Асинхронно: открытый наконечник</text>
+<text x="760.0" y="1160.375" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" fill="#252b30" font-weight="400">Цилиндр — данные компонента. Объект со складкой — данные обмена. Общий ID допустим.</text>
+<text x="760.0" y="1225.375" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" fill="#252b30" font-weight="400">Пунктир — вход/выход данных; сплошная связь действий — вызов/переход. Условия подписывают явно.</text>
+<text x="760.0" y="1290.375" font-family="Arial, sans-serif" font-size="21" text-anchor="middle" fill="#252b30" font-weight="400">Номер интерфейса общий для всего ОТАР; не номер шага. Цвета — приближение, не корпоративные RGB.</text>
+</svg>

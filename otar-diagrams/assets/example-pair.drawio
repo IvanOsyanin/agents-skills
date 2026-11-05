@@ -1,0 +1,346 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mxfile host="app.diagrams.net" type="device">
+  <diagram id="ОТАР — согласованная пара" name="ОТАР — согласованная пара">
+    <mxGraphModel grid="1" gridSize="10" page="1" pageScale="1" pageWidth="2240" pageHeight="1780">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="title" value="ОТАР: одна модель — два представления" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=31;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="30" y="15" width="2180" height="55" />
+        </mxCell>
+        <mxCell id="subtitle" value="Учебный синхронный сценарий. Названия условные; схема не описывает систему банка." vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="30" y="80" width="2180" height="40" />
+        </mxCell>
+        <mxCell id="info-title" value="1. Информационная архитектура" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=25;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="20" y="145" width="880" height="45" />
+        </mxCell>
+        <mxCell id="func-title" value="2. Функциональная архитектура" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=25;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="1000" y="145" width="1200" height="45" />
+        </mxCell>
+        <mxCell id="system" value="АС «Заявки»" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=26;strokeColor=#41474b;fillColor=#eaf2fc;rounded=1;arcSize=4;verticalAlign=top;spacingTop=15;fontStyle=1;">
+          <mxGeometry as="geometry" x="20" y="220" width="880" height="970" />
+        </mxCell>
+        <object id="i-c1" label="C1&#10;Заявки. Портал" evidence="Учебный пример; не факт проекта" component_id="C1" canonical_name="Заявки. Портал">
+          <mxCell vertex="1" parent="system" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=23;strokeColor=#41474b;fillColor=#9fc5f3;rounded=1;arcSize=4;verticalAlign=top;spacingTop=15;fontStyle=1;">
+            <mxGeometry as="geometry" x="20" y="105" width="300" height="820" />
+          </mxCell>
+        </object>
+        <object id="i-c2" label="C2&#10;Заявки. Сервис" evidence="Учебный пример; не факт проекта" component_id="C2" canonical_name="Заявки. Сервис">
+          <mxCell vertex="1" parent="system" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=23;strokeColor=#41474b;fillColor=#9fc5f3;rounded=1;arcSize=4;verticalAlign=top;spacingTop=15;fontStyle=1;">
+            <mxGeometry as="geometry" x="540" y="105" width="310" height="820" />
+          </mxCell>
+        </object>
+        <object id="i-C1.F1" label="C1.F1&#10;Отправить заявку" evidence="Учебный пример; не факт проекта" function_id="C1.F1" component_id="C1" canonical_name="Отправить заявку">
+          <mxCell vertex="1" parent="i-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#efbb96;rounded=1;arcSize=12;">
+            <mxGeometry as="geometry" x="15" y="115" width="270" height="85" />
+          </mxCell>
+        </object>
+        <object id="i-C1.F2" label="C1.F2&#10;Получить решение" evidence="Учебный пример; не факт проекта" function_id="C1.F2" component_id="C1" canonical_name="Получить решение">
+          <mxCell vertex="1" parent="i-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#efbb96;rounded=1;arcSize=12;">
+            <mxGeometry as="geometry" x="15" y="260" width="270" height="85" />
+          </mxCell>
+        </object>
+        <object id="i-C1.F3" label="C1.F3&#10;Показать решение" evidence="Учебный пример; не факт проекта" function_id="C1.F3" component_id="C1" canonical_name="Показать решение">
+          <mxCell vertex="1" parent="i-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#efbb96;rounded=1;arcSize=12;">
+            <mxGeometry as="geometry" x="15" y="405" width="270" height="85" />
+          </mxCell>
+        </object>
+        <object id="i-C2.F1" label="C2.F1&#10;Принять заявку" evidence="Учебный пример; не факт проекта" function_id="C2.F1" component_id="C2" canonical_name="Принять заявку">
+          <mxCell vertex="1" parent="i-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#efbb96;rounded=1;arcSize=12;">
+            <mxGeometry as="geometry" x="50" y="115" width="240" height="85" />
+          </mxCell>
+        </object>
+        <object id="i-C2.F2" label="C2.F2&#10;Рассчитать решение" evidence="Учебный пример; не факт проекта" function_id="C2.F2" component_id="C2" canonical_name="Рассчитать решение">
+          <mxCell vertex="1" parent="i-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#efbb96;rounded=1;arcSize=12;">
+            <mxGeometry as="geometry" x="50" y="260" width="240" height="85" />
+          </mxCell>
+        </object>
+        <object id="i-C2.F3" label="C2.F3&#10;Предоставить решение" evidence="Учебный пример; не факт проекта" function_id="C2.F3" component_id="C2" canonical_name="Предоставить решение">
+          <mxCell vertex="1" parent="i-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#efbb96;rounded=1;arcSize=12;">
+            <mxGeometry as="geometry" x="50" y="405" width="240" height="85" />
+          </mxCell>
+        </object>
+        <object id="i-D1" label="D1&#10;Заявка" evidence="Учебный пример; не факт проекта" entity_id="D1" role="component-data">
+          <mxCell vertex="1" parent="i-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#a9c574;shape=cylinder;size=15;spacingTop=15;">
+            <mxGeometry as="geometry" x="40" y="555" width="230" height="100" />
+          </mxCell>
+        </object>
+        <object id="i-D2" label="D2&#10;Решение" evidence="Учебный пример; не факт проекта" entity_id="D2" role="component-data">
+          <mxCell vertex="1" parent="i-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#a9c574;shape=cylinder;size=15;spacingTop=15;">
+            <mxGeometry as="geometry" x="40" y="695" width="230" height="100" />
+          </mxCell>
+        </object>
+        <mxCell id="transit" value="Транзит данных:&#10;цилиндр не требуется" vertex="1" parent="i-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="20" y="690" width="260" height="75" />
+        </mxCell>
+        <mxCell id="i-submit-label" value="Заявка&#10;[Принять заявку]" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="347" y="410" width="205" height="65" />
+        </mxCell>
+        <mxCell id="i-result-label" value="Решение&#10;[Предоставить решение]" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=16;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="342" y="695" width="215" height="75" />
+        </mxCell>
+        <object id="i-interface-1" label="1" evidence="Учебный пример; не факт проекта" interface_number="1" provider="C2">
+          <mxCell vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=16;strokeColor=#41474b;fillColor=#fff2b2;ellipse;">
+            <mxGeometry as="geometry" x="547" y="472" width="26" height="26" />
+          </mxCell>
+        </object>
+        <object id="i-interface-2" label="2" evidence="Учебный пример; не факт проекта" interface_number="2" provider="C2">
+          <mxCell vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=16;strokeColor=#41474b;fillColor=#fff2b2;ellipse;">
+            <mxGeometry as="geometry" x="547" y="767" width="26" height="26" />
+          </mxCell>
+        </object>
+        <mxCell id="i-actor" value="" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#ffffff;shape=umlActor;">
+          <mxGeometry as="geometry" x="70" y="1230" width="45" height="65" />
+        </mxCell>
+        <mxCell id="i-actor-label" value="Заявитель" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="30" y="1300" width="130" height="30" />
+        </mxCell>
+        <mxCell id="i-participation-label" value="Отправить заявку" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="195" y="1195" width="270" height="40" />
+        </mxCell>
+        <mxCell id="i-note-1" value="1: заявка → Сервис; поставщик — Сервис." vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="210" y="1240" width="680" height="45" />
+        </mxCell>
+        <mxCell id="i-note-2" value="2: решение → Портал; поставщик — Сервис." vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="210" y="1300" width="680" height="45" />
+        </mxCell>
+        <mxCell id="i-note-3" value="В обоих случаях вызов инициирует Портал.&#10;Стрелка показывает основные данные, не инициатора." vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="30" y="1390" width="860" height="80" />
+        </mxCell>
+        <mxCell id="i-note-4" value="Протоколы и технический ответ приёма опущены.&#10;Функции и сущности показаны раздельно." vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="30" y="1510" width="860" height="80" />
+        </mxCell>
+        <object id="f-c1" label="C1&#10;Заявки. Портал" evidence="Учебный пример; не факт проекта" component_id="C1" canonical_name="Заявки. Портал">
+          <mxCell vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=24;strokeColor=#41474b;fillColor=#ffffff;swimlane;startSize=95;horizontal=1;collapsible=0;swimlaneFillColor=#ffffff;fontStyle=1;">
+            <mxGeometry as="geometry" x="1000" y="220" width="540" height="1430" />
+          </mxCell>
+        </object>
+        <object id="f-c2" label="C2&#10;Заявки. Сервис" evidence="Учебный пример; не факт проекта" component_id="C2" canonical_name="Заявки. Сервис">
+          <mxCell vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=24;strokeColor=#41474b;fillColor=#ffffff;swimlane;startSize=95;horizontal=1;collapsible=0;swimlaneFillColor=#ffffff;fontStyle=1;">
+            <mxGeometry as="geometry" x="1640" y="220" width="540" height="1430" />
+          </mxCell>
+        </object>
+        <mxCell id="f-start" value="" vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#92ce50;ellipse;">
+          <mxGeometry as="geometry" x="245" y="155" width="50" height="50" />
+        </mxCell>
+        <mxCell id="f-start-label" value="Подать заявку" vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="100" y="110" width="340" height="30" />
+        </mxCell>
+        <mxCell id="f-actor" value="" vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#ffffff;shape=umlActor;">
+          <mxGeometry as="geometry" x="40" y="135" width="45" height="65" />
+        </mxCell>
+        <mxCell id="f-actor-label" value="Заявитель" vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=18;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="10" y="205" width="130" height="35" />
+        </mxCell>
+        <object id="f-C1.F1" label="C1.F1&#10;Отправить заявку" evidence="Учебный пример; не факт проекта" function_id="C1.F1" component_id="C1" canonical_name="Отправить заявку">
+          <mxCell vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=#bacbdd;rounded=1;arcSize=16;">
+            <mxGeometry as="geometry" x="100" y="250" width="320" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-C1.F2" label="C1.F2&#10;Получить решение" evidence="Учебный пример; не факт проекта" function_id="C1.F2" component_id="C1" canonical_name="Получить решение">
+          <mxCell vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=#bacbdd;rounded=1;arcSize=16;">
+            <mxGeometry as="geometry" x="100" y="820" width="320" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-C1.F3" label="C1.F3&#10;Показать решение" evidence="Учебный пример; не факт проекта" function_id="C1.F3" component_id="C1" canonical_name="Показать решение">
+          <mxCell vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=#bacbdd;rounded=1;arcSize=16;">
+            <mxGeometry as="geometry" x="100" y="1190" width="320" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-C2.F1" label="C2.F1&#10;Принять заявку" evidence="Учебный пример; не факт проекта" function_id="C2.F1" component_id="C2" canonical_name="Принять заявку">
+          <mxCell vertex="1" parent="f-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=#bacbdd;rounded=1;arcSize=16;">
+            <mxGeometry as="geometry" x="40" y="400" width="320" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-C2.F2" label="C2.F2&#10;Рассчитать решение" evidence="Учебный пример; не факт проекта" function_id="C2.F2" component_id="C2" canonical_name="Рассчитать решение">
+          <mxCell vertex="1" parent="f-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=#bacbdd;rounded=1;arcSize=16;">
+            <mxGeometry as="geometry" x="40" y="640" width="320" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-C2.F3" label="C2.F3&#10;Предоставить решение" evidence="Учебный пример; не факт проекта" function_id="C2.F3" component_id="C2" canonical_name="Предоставить решение">
+          <mxCell vertex="1" parent="f-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=#bacbdd;rounded=1;arcSize=16;">
+            <mxGeometry as="geometry" x="40" y="1000" width="320" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-request" label="D1&#10;Заявка" evidence="Учебный пример; не факт проекта" entity_id="D1" role="exchange-data">
+          <mxCell vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#8faa50;shape=note;size=22;">
+            <mxGeometry as="geometry" x="130" y="460" width="230" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-stored-request" label="D1&#10;Заявка" evidence="Учебный пример; не факт проекта" entity_id="D1" role="component-data">
+          <mxCell vertex="1" parent="f-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;strokeColor=#41474b;fillColor=#a9c574;shape=cylinder;size=15;spacingTop=15;">
+            <mxGeometry as="geometry" x="375" y="515" width="145" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-stored-result" label="D2&#10;Решение" evidence="Учебный пример; не факт проекта" entity_id="D2" role="component-data">
+          <mxCell vertex="1" parent="f-c2" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;strokeColor=#41474b;fillColor=#a9c574;shape=cylinder;size=15;spacingTop=15;">
+            <mxGeometry as="geometry" x="375" y="830" width="145" height="100" />
+          </mxCell>
+        </object>
+        <object id="f-result" label="D2&#10;Решение" evidence="Учебный пример; не факт проекта" entity_id="D2" role="exchange-data">
+          <mxCell vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#8faa50;shape=note;size=22;">
+            <mxGeometry as="geometry" x="130" y="1030" width="230" height="100" />
+          </mxCell>
+        </object>
+        <mxCell id="f-end" value="" vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=20;strokeColor=#41474b;fillColor=#e5a5a5;ellipse;strokeWidth=5;">
+          <mxGeometry as="geometry" x="245" y="1330" width="50" height="50" />
+        </mxCell>
+        <mxCell id="f-end-label" value="Решение показано" vertex="1" parent="f-c1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=19;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="100" y="1390" width="340" height="30" />
+        </mxCell>
+        <mxCell id="f-ack-label" value="Приём завершён" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="1320" y="875" width="210" height="30" />
+        </mxCell>
+        <object id="f-interface-1" label="1" evidence="Учебный пример; не факт проекта" interface_number="1" provider="C2">
+          <mxCell vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+            <mxGeometry as="geometry" x="1500" y="480" width="50" height="35" />
+          </mxCell>
+        </object>
+        <object id="f-interface-2" label="2" evidence="Учебный пример; не факт проекта" interface_number="2" provider="C2">
+          <mxCell vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=21;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+            <mxGeometry as="geometry" x="1490" y="1160" width="50" height="35" />
+          </mxCell>
+        </object>
+        <mxCell id="f-return-label" value="2: возврат" vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=17;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="1445" y="1360" width="140" height="35" />
+        </mxCell>
+        <mxCell id="footer" value="Точные имена и ID функций совпадают. 1 и 2 — интерфейсы всего ОТАР, не номера шагов сценария." vertex="1" parent="1" style="html=0;whiteSpace=wrap;fontFamily=Arial;fontSize=23;strokeColor=#41474b;fillColor=none;text;strokeColor=none;">
+          <mxGeometry as="geometry" x="30" y="1700" width="2180" height="45" />
+        </mxCell>
+        <object id="i-submit" label="" evidence="Учебный пример; не факт проекта" interface_number="1" provider="C2" service="C2.F1" data_id="D1" initiator="C1">
+          <mxCell edge="1" parent="1" source="i-C1.F1" target="i-C2.F1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.5294117647058824;exitPerimeter=0;entryX=0.0;entryY=0.5294117647058824;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <object id="i-result" label="" evidence="Учебный пример; не факт проекта" interface_number="2" provider="C2" service="C2.F3" data_id="D2" initiator="C1">
+          <mxCell edge="1" parent="1" source="i-C2.F3" target="i-c1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.0;exitY=0.5882352941176471;exitPerimeter=0;entryX=1.0;entryY=0.5548780487804879;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="i-participation" value="" edge="1" parent="1" source="i-actor" target="i-c1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.4888888888888889;exitY=0.0;exitPerimeter=0;entryX=0.5;entryY=1.0;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="92" y="1205" />
+              <mxPoint x="190" y="1205" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-begin" value="" edge="1" parent="1" source="f-start" target="f-C1.F1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.53125;entryY=0.0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-participation" value="" edge="1" parent="1" source="f-actor" target="f-C1.F1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.49230769230769234;exitPerimeter=0;entryX=0.125;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1140" y="387" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <object id="f-submit" label="" evidence="Учебный пример; не факт проекта" interface_number="1" provider="C2" service="C2.F1">
+          <mxCell edge="1" parent="1" source="f-C1.F1" target="f-C2.F1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.5;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="1585" y="520" />
+                <mxPoint x="1585" y="670" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="f-request-out" value="" edge="1" parent="1" source="f-C1.F1" target="f-request" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.453125;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-request-in" value="" edge="1" parent="1" source="f-request" target="f-C2.F1" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.0;entryY=0.8;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1605" y="730" />
+              <mxPoint x="1605" y="700" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-accept-calc" value="" edge="1" parent="1" source="f-C2.F1" target="f-C2.F2" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-request-store" value="" edge="1" parent="1" source="f-C2.F1" target="f-stored-request" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.5;exitPerimeter=0;entryX=0.496551724137931;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2087" y="670" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-request-read" value="" edge="1" parent="1" source="f-stored-request" target="f-C2.F2" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.496551724137931;exitY=1.0;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2087" y="910" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-result-store" value="" edge="1" parent="1" source="f-C2.F2" target="f-stored-result" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.75;exitPerimeter=0;entryX=0.496551724137931;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2087" y="935" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-submit-return" value="" edge="1" parent="1" source="f-C2.F2" target="f-C1.F2" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.0;exitY=0.5;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="1570" y="910" />
+              <mxPoint x="1570" y="1090" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <object id="f-get" label="" evidence="Учебный пример; не факт проекта" interface_number="2" provider="C2" service="C2.F3">
+          <mxCell edge="1" parent="1" source="f-C1.F2" target="f-C2.F3" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=1.0;exitY=0.3;exitPerimeter=0;entryX=0.0;entryY=0.3;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="1550" y="1070" />
+                <mxPoint x="1550" y="1250" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="f-result-read" value="" edge="1" parent="1" source="f-stored-result" target="f-C2.F3" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.496551724137931;exitY=1.0;exitPerimeter=0;entryX=1.0;entryY=0.7;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points">
+              <mxPoint x="2087" y="1290" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <object id="f-return" label="" evidence="Учебный пример; не факт проекта" interface_number="2" provider="C2" service="C2.F3">
+          <mxCell edge="1" parent="1" source="f-C2.F3" target="f-C1.F3" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.0;exitY=0.7;exitPerimeter=0;entryX=1.0;entryY=0.5;entryPerimeter=0;">
+            <mxGeometry as="geometry" relative="1">
+              <Array as="points">
+                <mxPoint x="1590" y="1290" />
+                <mxPoint x="1590" y="1460" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </object>
+        <mxCell id="f-result-out" value="" edge="1" parent="1" source="f-C2.F3" target="f-result" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.0;exitY=0.9;exitPerimeter=0;entryX=1.0;entryY=0.6;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-result-in" value="" edge="1" parent="1" source="f-result" target="f-C1.F3" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.5;exitY=1.0;exitPerimeter=0;entryX=0.453125;entryY=0.0;entryPerimeter=0;dashed=1;dashPattern=6 4;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="f-finish" value="" edge="1" parent="1" source="f-C1.F3" target="f-end" style="rounded=0;endArrow=block;endFill=1;strokeWidth=1.8;strokeColor=#41474b;exitX=0.53125;exitY=1.0;exitPerimeter=0;entryX=0.5;entryY=0.0;entryPerimeter=0;">
+          <mxGeometry as="geometry" relative="1">
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
