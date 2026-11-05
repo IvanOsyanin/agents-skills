@@ -1,106 +1,108 @@
-# Информационная схема ОТАР
+# OTAR Information Diagram
 
-Покажи состав решения и смысл взаимодействий в выбранной области. Это не ER-модель
-и не последовательность выполнения. Порядок функций внутри голубого компонента
-не задаёт порядок действий; он может определяться удобством чтения.
-На проект поддерживай одну информационную модель/схему, покрывающую подтверждённые
-сценарии в области охвата. Не создавай отдельные конкурирующие архитектурные схемы
-для разных сценариев. Для читаемости схема может состоять из нескольких связанных
-листов. Для пары сначала согласуй этот состав, затем раскрой его функционально.
+Show the solution's composition and the meaning of interactions within the selected
+scope. This is neither an ER model nor an execution sequence. The order of functions
+inside a blue component does not define action order; it may be arranged for readability.
+Maintain one information model/diagram per project covering confirmed in-scope scenarios.
+Do not create competing architecture diagrams for separate scenarios. A diagram may use
+multiple linked sheets for readability. For a paired view, agree on this composition first,
+then elaborate it functionally.
 
-Если пользователь передал готовую архитектурную схему, считай её исходной моделью:
-разбери роли, компоненты, функции, данные, обмены, границы и имеющиеся ID/номера;
-сопоставь их с кодом и требованиями. Сохраняй подтверждённые решения и номера,
-уточняй или дополняй схему там, где есть основания. Не заменяй её молча другой
-архитектурой и не оставляй несколько итоговых версий. Если исходник — изображение,
-используй его как контекст и создай редактируемую итоговую схему.
+If the user provides an existing architecture diagram, treat it as the source model:
+identify roles, components, functions, data, exchanges, boundaries, and existing IDs/numbers;
+compare them with code and requirements. Preserve confirmed decisions and numbering, and
+refine or extend the diagram only when supported by evidence. Do not silently replace it with
+another architecture or leave competing final versions. If the source is an image, use it as
+context and create an editable final diagram.
 
-## Состав
+## Composition
 
-- Укажи роли участников и внешние системы, действительно участвующие в сценариях.
-  Роль человека и компонент приложения — разные элементы.
-- Размещай прикладные компоненты внутри систем/подсистем, если такая принадлежность
-  подтверждена. Площадку размещения, организационное владение и композицию компонентов
-  не смешивай: назови смысл внешнего контейнера. Не делай папку исходного кода
-  отдельной системой без архитектурного основания. Компонент АС — инкапсуляция
-  функциональных возможностей приложения, согласованная с модульной и заменяемой
-  структурой реализации; это не произвольный набор функций на листе.
-- Полное имя компонента: `Родительская АС. Компонент. Подкомпонент`. Оно сохраняет
-  принадлежность даже вне контейнера, например `Заявки. API. Проверка`.
-  Неподтверждённого родителя не выдумывай. ID и стек не заменяют архитектурное имя.
-- Покажи функции отдельными жёлто-оранжевыми блоками: глагол + объект действия
-  или отглагольное существительное + объект. Не объединяй разные функции запятыми.
-  Сохраняй ID исполнителя и функции, даже если названия у разных систем совпадают.
-- «Сервис АС» — функция, опубликованная для использования другой АС; обычно именно
-  она участвует во взаимодействии. Это не обязательно микросервис или отдельный
-  runtime. Название сервиса на связи должно совпадать с опубликованной функцией.
-- Доменные сущности показывай отдельными зелёными цилиндрами. «Заявка» и «Решение» —
-  две фигуры, а не один цилиндр «Заявки, решения». Атрибут/состояние одной сущности
-  и перенос длинного имени не требуют искусственного дробления.
-  Компонент без своих данных допустим. Уточни, если это временная копия, данные в памяти
-  или постоянная запись; цилиндр сам этого не доказывает.
-- Компонент, лишь передающий сущность транзитом, может не содержать её цилиндр.
-  Достаточно подписанных входящего/исходящего обменов и отметки «транзит» в реестре.
-- Разделяй логического владельца данных, физическое место хранения и получателя
-  копии. Например, приложение управляет статусом заявки, PostgreSQL хранит запись,
-  UI показывает копию. Расположение сущности не заменяет это различие.
-- Верхнеуровневую схему не перегружай стеком, транспортом и служебными деталями.
-  Подтверждённый стек храни в реестре; на лист выноси по запросу технического
-  представления или при явной необходимости. Контракт «S3-совместимое хранилище»
-  не доказывает AWS S3,
-  а OpenAI-совместимый API не доказывает конкретный шлюз или поставщика моделей.
+- Show participant roles and external systems that actually take part in the scenarios.
+  A human role and an application component are different elements.
+- Place application components inside systems/subsystems only when ownership is verified.
+  Do not confuse deployment location, organizational ownership, and component composition;
+  name the meaning of each outer container. Do not turn a source-code folder into a system
+  without architectural evidence. An application-system component encapsulates application
+  capabilities consistently with a modular, replaceable implementation; it is not an
+  arbitrary collection of functions on a page.
+- Use full component names in the project's language. In Russian, use the form
+  `Родительская АС. Компонент. Подкомпонент`, e.g. `Заявки. API. Проверка`. This preserves
+  ownership outside a container. Do not invent an unverified parent. IDs and technology
+  stacks are not substitutes for architectural names.
+- Show functions as separate yellow-orange blocks, named with a verb and object or a verbal
+  noun and object. Do not combine distinct functions in a comma-separated list. Preserve
+  executor and function IDs even when different systems use the same display name.
+- An “AS service” is a function published for use by another AS and is typically involved
+  in an interaction. It is not necessarily a microservice or separate runtime. The service
+  named on a link must match the published function.
+- Show domain entities as separate green cylinders. The Russian examples “Заявка” (Application)
+  and “Решение” (Decision) are two shapes, not one cylinder labelled “Заявки, решения”. Do
+  not split one entity merely to show its attributes/state or wrap a long name.
+  A component may have no data of its own. Determine whether data is a temporary copy,
+  in-memory, or persistent; a cylinder alone does not prove this.
+- A component that only transmits an entity may omit its cylinder. Label inbound/outbound
+  exchanges and mark “transit” in the evidence register.
+- Distinguish logical data ownership, physical storage location, and copy recipient. For
+  example, an application may own an application status, PostgreSQL may store a record, and
+  a UI may display a copy. Entity placement does not replace this distinction.
+- Do not overload the overview with stack, transport, or operational details. Keep verified
+  stack information in the evidence register; add it to the diagram only when requested or
+  clearly necessary. An “S3-compatible storage” contract does not prove AWS S3, and an
+  OpenAI-compatible API does not prove a specific gateway or model provider.
 
-## Обмены
+## Exchanges
 
-Для каждой связи должны читаться источник/получатель основных данных, сами данные,
-поставщик сервиса и вызываемая функция. Инициатор вызова и источник данных — разные
-поля реестра. Не рисуй обязательную пару стрелок «запрос/ответ» для любого вызова:
-технический статус, ACK и коды возврата не являются самостоятельным бизнес-обменом.
-Существенные встречные потоки разных данных допустимы; не теряй значимый результат.
+For every link, make the source/recipient of primary data, the data itself, the service
+provider, and the called function clear. The call initiator and data source are separate
+register fields. Do not draw a mandatory “request/response” arrow pair for every call:
+technical status, ACK, and return codes are not independent business exchanges. Meaningful
+data flows in both directions are valid; do not omit a significant result.
 
-Подпись над линией: `Заявка [Принять заявку]` или
-`Инвестиционные продукты клиента(известная категория ИБ) [Предоставить продукты]`.
-Передаваемые данные по смыслу соответствуют зелёной сущности; имена должны быть
-согласованы, а не обязательно повторять множественное число или детали фильтра.
-Скобки категории ИБ опускай, если категория не известна. Не назначай её по домену.
-Длинную подпись можно вынести в однозначно связанную легенду, оставив данные на линии.
+Label the link with the data and service, for example `Заявка [Принять заявку]` or
+`Инвестиционные продукты клиента (known security category) [Предоставить продукты]`.
+The exchanged data should semantically match the green entity. Keep names consistent, but
+they need not repeat pluralization or filter details. Omit the security-category parentheses
+when the category is unknown; do not infer a category from the domain. A long label may be
+moved to an unambiguous legend, but keep the data name on the link.
 
-### Интерфейс, направление и режим
+### Interface, Direction, and Mode
 
-- Жёлтый номерной кружок ставится **у поставщика сервиса**: АС, реализующей функцию,
-  или мастер-системы ключевой сущности взаимодействия. Это не всегда начало стрелки.
-- При передаче заявки в сервис стрелка идёт `потребитель → поставщик`, кружок у
-  получателя. При получении списка продуктов — `поставщик → потребитель`, кружок
-  у отправителя, хотя запрос инициировал потребитель. Если мастер-система и
-  реализующий сервис различаются, зафиксируй выбранную роль и основание в реестре;
-  не выбирай положение кружка по геометрии линии.
-- Нумерация интерфейсов/взаимодействий сквозная для всего ОТАР и всех листов.
-  Не начинай заново на функциональном виде. Сохраняй существующие номера при
-  актуализации. Номер — стабильная ссылка, а не алгоритмический порядок шагов.
-  Несколько изображений одного интерфейса сохраняют его номер, разные интерфейсы
-  не получают один номер только из-за совпадения исполнителей.
-- Синхронная связь — заполненный треугольный наконечник, асинхронная — открытый.
-  Протоколы на обзорном листе не указывай. При неизвестном режиме не выдавай
-  выбранный наконечник за доказанный: явно отметь неопределённость.
+- Place the yellow numbered circle **by the service provider**: the AS that implements the
+  function or the master system for a key entity in the interaction. It is not necessarily
+  at the start of the arrow.
+- When submitting an application to a service, the arrow is `consumer → provider` and the
+  circle is by the recipient. When retrieving a product list, the arrow is `provider → consumer`
+  and the circle is by the sender, even though the consumer initiated the request. If the
+  master system differs from the implementing service, record the selected role and evidence
+  in the register; do not position the circle based on line geometry.
+- Interface/interaction numbering is global across the entire OTAR and all sheets. Do not
+  restart numbering in the functional view. Preserve existing numbers when updating. A number
+  is a stable reference, not an algorithmic stage order. Repeated depictions of the same
+  interface keep its number; distinct interfaces do not share one merely because their
+  executors match.
+- A filled triangle means synchronous interaction; an open triangle means asynchronous.
+  Omit protocols from the overview. If the mode is unknown, do not present a chosen arrowhead
+  as verified; mark the uncertainty explicitly.
 
-От участника допустим пунктир к компоненту с названием используемой функции
-или прямо к функции. Это наблюдается в исходном информационном примере.
-Условное подключение подписывай явно, например «если включено журналирование».
+An actor may have a dashed link to a component labelled with the function used, or directly
+to the function. This appears in the supplied information example. Label conditional
+participation explicitly, for example “if logging is enabled”.
 
-## Связь с функциональной схемой
+## Relationship to the Functional Diagram
 
-Одна и та же функция имеет одного исполнителя и **то же имя** в обеих проекциях.
-Вложенный компонент становится дорожкой с полным именем `АС. Компонент`.
-Соседство дорожек не изображает размещение на сервере.
+The same function has the same executor and **exact same name** in both views. A nested
+component becomes a lane with its full `AS. Component` name. Adjacent lanes do not imply
+server deployment.
 
-В реестре зафиксируй отображение `компонент + функция → шаги сценариев`.
-При детализации допустимы несколько шагов на одну функцию с явным указанием
-родительской функции. Не подменяй её название синонимом. Если это самостоятельные
-функции выбранного уровня, сначала добавь их в информационную модель. Одинаковый текст
-«Исполнить заявку» в двух системах не объединяет две разные функции.
-Если часть состава не раскрыта функционально, обозначь границу охвата.
+In the register, map `component + function → scenario stages`. Multiple detailed stages may
+map to one function if its parent function is identified explicitly. Do not replace the
+function name with a synonym. If these are independent functions at the selected level, add
+them to the information model first. Identical wording such as “Исполнить заявку” in two
+systems does not make them one function. Mark the scope boundary if part of the composition
+is not elaborated functionally.
 
-Перед экспортом проверь: роли и внешние границы видимы, функции принадлежат
-правильным компонентам, каждая сущность отдельна, транзит не выдан за владение,
-обмены подписаны данными и сервисом, кружки стоят у поставщиков, номера сквозные,
-направление данных и режим не перепутаны, целевой стек не выдан за развёрнутый.
+Before export, verify that roles and external boundaries are visible; functions belong to
+the correct components; entities are separate; transit is not shown as ownership; exchanges
+are labelled with data and service; interface circles sit by providers; numbering is global;
+data-flow direction and sync/async mode are correct; and target technology is not presented
+as deployed technology.

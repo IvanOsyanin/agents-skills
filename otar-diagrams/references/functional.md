@@ -1,106 +1,103 @@
-# Функциональная схема ОТАР
+# OTAR Functional Diagram
 
-Покажи одну согласованную функциональную схему проекта со всеми подтверждёнными
-сценариями в выбранной области. Не создавай отдельную альтернативную схему для
-каждого сценария или компонента. Внутри общей модели явно разделяй сценарии с их
-инициаторами, действиями, взаимодействиями и исходами. Используй белые вертикальные дорожки
-исполнителей и отдельные голубые действия основного профиля
-[визуальной грамматики](notation.md). Функциональный вид раскрывает информационный,
-а не переименовывает его функции и интерфейсы.
+Create one coordinated functional diagram for the project, covering all confirmed
+scenarios within the selected scope. Do not create separate alternative diagrams for
+each scenario or component. Within the shared model, clearly separate scenarios by
+initiator, actions, interactions, and outcomes. Use white vertical executor lanes and
+separate blue actions from the primary [visual profile](notation.md). The functional view
+elaborates the information view; it does not rename its functions or interfaces.
 
-## Сценарии и ответственность
+## Scenarios and Responsibilities
 
-У каждого сценария зафиксируй событие запуска, вход и наблюдаемый результат.
-Перед экспортом сверь сценарии с реестром: для каждого входящего в область сценария
-покажи путь от запуска до исхода, включая существенные варианты, ошибки и независимые
-фоновые запуски. Не считай один успешный happy path покрытием остальных сценариев.
-Не добавляй гипотетические сценарии без основания; неизвестные границы отметь явно.
-Если схема велика, используй связанные листы одной модели и обозначь переходы между
-ними, а не создавай несколько несвязанных финальных файлов.
-Различай запрос пользователя, доставку сообщения, таймер и чтение состояния.
-Ответ HTTP, публикация задания и начало фоновой обработки не образуют одну
-непрерывную цепочку только потому, что относятся к одному бизнес-объекту.
+For each scenario, record its triggering event, input, and observable outcome. Before
+export, compare scenarios with the evidence register: show a path from trigger to outcome
+for every in-scope scenario, including material variants, errors, and independent background
+launches. A successful happy path does not cover other scenarios. Do not add hypothetical
+scenarios without evidence; mark unknown scope boundaries explicitly. For a large diagram,
+use linked sheets within one model and label transitions rather than creating unrelated
+final files. Distinguish a user request, message delivery, timer, and state read. An HTTP
+response, job publication, and start of background processing are not one continuous flow
+merely because they concern the same business object.
 
-Дорожка соответствует компоненту выбранного уровня. Если API, обработчик и
-планировщик запускаются независимо и обязанности важны для сценария, раздели их.
-Не создавай отдельную дорожку для каждого класса/пакета. Размещение компонента
-в информационной модели и исполнитель действия должны согласовываться по ID.
-Имя дорожки сохраняет полную принадлежность: `АС. Компонент. Подкомпонент`.
-Роль человека показывай отдельно, с пунктирной связью участия к действию;
-участник не становится автоматически ещё одной АС.
+Each lane represents a component at the selected level. If the API, handler, and scheduler
+run independently and their responsibilities matter to the scenario, separate them. Do not
+create a lane for every class/package. Component placement in the information model and
+action executor must agree by ID. Preserve full ownership in lane names, e.g. `AS. Component.
+Subcomponent`. Show a human role separately, with a dashed participation link to the action;
+an actor does not automatically become another AS.
 
-## Действия и данные
+## Actions and Data
 
-Один блок — одно действие выбранного уровня с понятным результатом. Например:
-«Принять документ» → «Сохранить копию» → «Зарегистрировать заявку» → «Вернуть ID».
-Не соединяй действия лишь из-за их порядка в информационном контейнере: порядок
-определяет код. Одна атомарная транзакция с несколькими записями может остаться
-одним действием, если названа её граница. Несколько независимых операций так
-объединять нельзя.
+One block represents one action at the selected level with a clear outcome. For example:
+“Принять документ” → “Сохранить копию” → “Зарегистрировать заявку” → “Вернуть ID”. Do not
+connect actions merely because they appear in that order inside an information container;
+the code determines execution order. One atomic transaction with several writes may remain
+one action if its boundary is stated. Do not combine independent operations this way.
 
-Имя функции переносится **точно** из информационной схемы: «Предоставление
-продуктов клиента» не переименовывается в «Выдать продукты». Повторное выполнение
-той же функции допускает несколько блоков с общим ID функции и разными ID шагов.
-Для подшагов явно указывай родительские имя/ID; самостоятельные функции выбранного
-уровня добавь и в информационную модель. Не скрывай расхождение одним лишь общим ID.
+Copy each function name **exactly** from the information diagram: do not rename
+“Предоставление продуктов клиента” (“Provide client products”) as “Выдать продукты” (“Issue
+products”). Repeated execution of one function may use multiple blocks with a shared function
+ID and distinct stage IDs. For sub-stages, identify the parent function name/ID. Add
+independent functions at the selected level to the information model as well; a shared ID
+alone does not hide a name mismatch.
 
-Выполняемую приложением проверку помещай в его дорожку, даже если проверяются
-данные из хранилища. Запись/чтение/удаление относятся к функциям хранилища;
-решение, когда выполнить их, принадлежит вызывающему компоненту.
+Place an application-performed validation in that application's lane, even when it checks
+stored data. Write/read/delete operations belong to storage functions; the caller decides
+when they run.
 
-Сплошные связи показывают осмысленные вызовы/переходы между действиями. Покажи
-возврат результата и дальнейшее действие получателя, если это часть сценария.
-У межсистемного вызова укажи тот же номер интерфейса, что на информационном виде;
-порядок действий задаёт сценарий, не возрастание этих номеров.
+Solid links show meaningful calls/transitions between actions. Show a returned result and
+the receiver's next action when they are part of the scenario. For an inter-system call,
+use the same interface number as in the information view; scenario order, not increasing
+interface numbers, determines action order.
 
-### Как выбрать фигуру сущности
+### Choosing a Data Shape
 
-| Что показываем | Фигура и связь | Чего из неё не следует |
+| What is shown | Shape and link | What it does not imply |
 | --- | --- | --- |
-| Логические данные, которыми располагает компонент: согласие, продукт, заявка | Зелёный цилиндр в дорожке владельца/держателя; пунктир к читающему или от записывающего действия | Конкретная СУБД, диск, постоянность или обязательная отдельная БД |
-| Экземпляр/набор данных на выходе функции или входе следующей: переданное согласие, полученный список продуктов | Зелёный объект с загнутым правым верхним углом и внутренней складкой; пунктир `действие → данные → действие` | Файл на диске, бумажный документ или отдельная доменная сущность |
+| Logical data held by a component: consent, product, application | Green cylinder in the owner/holder lane; dashed link to a reading action or from a writing action | A specific DBMS, disk, persistence, or mandatory separate database |
+| Data instance/set produced by one function or consumed by the next: transferred consent, received product list | Green object with a folded top-right corner and visible inner fold; dashed `action → data → action` links | A disk file, paper document, or separate domain entity |
 
-Например, «Признак согласия» хранится логически у исходной АС (цилиндр),
-«Предоставить данные» создаёт выходной объект «Признак согласия» (со складкой),
-а «Передать данные» принимает этот объект. На получателе цилиндр появляется
-только при подтверждённом сохранении/владении; при транзите он не обязателен.
-Цилиндр и объект обмена могут ссылаться на один ID сущности с разными ролями.
-Для нескольких сущностей используй отдельные фигуры, не перечень внутри одной.
+For example, the source AS logically owns “Признак согласия” (“Consent flag”; cylinder),
+“Предоставить данные” (“Provide data”) creates an output object “Признак согласия” (folded
+payload), and “Передать данные” (“Transfer data”) consumes it. Add a cylinder at the receiver
+only when storage/ownership is confirmed; it is optional for transit. The cylinder and
+exchange object may share one entity ID while representing different roles. Use separate
+shapes for multiple entities; do not put a list inside one shape.
 
-Объекты подписывай существительными; линия данных всегда пунктирная и направленная
-по смыслу чтения/записи. Сплошная связь действий и пунктир данных — разные слои,
-одна не заменяет другую. Ни одна зелёная фигура не заменяет функцию, сервис или
-обозначение успеха. Для сохранения старой схемы допустим прежний профиль без складки,
-но запрет складки к новым образцам не применяется.
+Label data objects with nouns; data links are always dashed and directed according to
+reading/writing semantics. Solid action links and dashed data links are separate layers;
+neither replaces the other. No green shape replaces a function, service, or success marker.
+An older no-fold profile may be retained to preserve an existing diagram; the fold must not
+be omitted from new examples.
 
-## Ветви и завершение
+## Branches and Completion
 
-Правила ветвления — рабочие соглашения скилла, а не полный регламент ОТАР.
-Форма начала/завершения подтверждена официальными материалами.
+Branching rules below are working conventions for this Skill, not a complete OTAR standard.
+The start/end shapes are confirmed by the supplied official materials.
 
-- У альтернативных исходов подписывай выходящие связи: «данные корректны»,
-  «ошибка проверки», «временная ошибка». Ветви должны приводить к видимому действию,
-  исходу или обозначенному продолжению на другом листе.
-- Не называй развилку параллельным запуском. Параллельность и условие ожидания
-  результатов задавай явно, если они подтверждены; не добавляй неизвестные шлюзы.
-- Повтор возвращай к месту новой попытки с условием/пределом, если они известны.
-  Периодический опрос — повтор чтения, а не повтор создания/обработки.
-- Для асинхронного обмена покажи публикацию, принятие задания и отдельный запуск
-  обработчика. При существенности отметь порядок commit, отправки и подтверждения.
-  Переданный ID не превращается в переданное содержимое документа.
-- В основном профиле начало — зелёный круг, конец — розовый круг с толстой чёрной
-  обводкой; подпиши запуск и смысл исхода:
-  «ID выдан», «результат сохранён», «ошибка возвращена». Конец HTTP-запроса
-  не означает завершение фоновой работы. Для продолжающегося цикла обозначь цикл,
-  а не выдуманное окончательное состояние.
-- При разделении на листы сохраняй ID перехода и подписи «продолжение: лист …»;
-  случайный обрыв стрелки не заменяет переход.
+- Label outgoing links for alternative outcomes, e.g. “данные корректны” (“data valid”),
+  “ошибка проверки” (“validation error”), or “временная ошибка” (“temporary error”). Each
+  branch must lead to a visible action, outcome, or labelled continuation on another sheet.
+- Do not call a decision split a parallel launch. Show parallelism and result-wait conditions
+  explicitly when verified; do not invent gateways.
+- Route retries back to the retry point and label known conditions/limits. Polling is a
+  repeated read, not repeated creation/processing.
+- For asynchronous exchange, show publication, job acceptance, and a separate handler launch.
+  When material, show commit/send/acknowledgement order. A transmitted ID is not the document
+  contents.
+- In the primary profile, use a green circle for start and a pink circle with a thick black
+  outline for end; label the trigger and outcome, e.g. “ID выдан” (“ID issued”), “результат
+  сохранён” (“result saved”), or “ошибка возвращена” (“error returned”). An HTTP request ending
+  does not mean background work is complete. For a continuing loop, show a loop rather than
+  inventing a final state.
+- When splitting across sheets, preserve transition IDs and label links “продолжение: лист …”
+  (“continuation: sheet …”); an accidental broken arrow is not a valid transition.
 
-Раскрывай сбои настолько, насколько они меняют результат или ответственность:
-проверку входа, отказ внешней системы, повтор/окончательную ошибку, компенсацию.
-Не превращай обзорный лист в перечень всех исключений кода. Спрятанные технические
-детали не должны менять смысл успешного результата или границы транзакции.
+Show failures in enough detail to explain changed outcomes or responsibilities: input
+validation, external-system failure, retry/final error, or compensation. Do not turn the
+overview sheet into a list of every code exception. Hidden technical details must not change
+the meaning of a successful outcome or transaction boundary.
 
-Перед экспортом проследи сценарий от начала до каждого исхода; проверь исполнителей,
-данные, условия и направление возврата. Сопоставь шаги с функциями информационной
-модели по паре ID компонента и функции.
+Before export, trace each scenario from its start to every outcome; verify executors, data,
+conditions, and return direction. Map stages to information-model functions by the component
+ID and function ID pair.

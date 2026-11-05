@@ -1,4 +1,4 @@
 interface:
   display_name: "Code Review"
-  short_description: "Проверка кода: риски, тесты и регрессии"
-  default_prompt: "Используй $code-review, чтобы проверить текущую ветку или diff и выдать приоритетные замечания."
+  short_description: "Code review: risks, tests, and regressions"
+  default_prompt: "Use $code-review to review the current branch or diff and report prioritized findings."

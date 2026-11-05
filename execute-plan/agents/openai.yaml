@@ -1,4 +1,4 @@
 interface:
-  display_name: "Поэтапное выполнение плана"
-  short_description: "Шаги с проверкой и коммитами"
-  default_prompt: "Используй $execute-plan для поэтапного выполнения утверждённого плана."
+  display_name: "Plan Execution"
+  short_description: "Stages with checks and commits"
+  default_prompt: "Use $execute-plan to execute an approved plan one stage at a time."

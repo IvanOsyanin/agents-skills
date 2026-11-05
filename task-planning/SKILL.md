@@ -1,70 +1,72 @@
 ---
 name: task-planning
-description: "Составление подробных планов реализации для одного или нескольких MR: анализ проекта, готовый код шагов, тесты и проверки. Use for implementation planning or when explicitly requested."
+description: "Prepare detailed implementation plans for one or more MRs, including project analysis, complete step code, tests, and checks. Use for implementation planning or when explicitly requested."
 ---
 
-# Планирование задачи
+# Task Planning
 
-## Назначение и границы
+## Purpose and Scope
 
-Подготовь согласуемый план реализации для существующего проекта. Пиши по-русски, если пользователь не выбрал другой язык. Не реализуй план, не запускай агентов-исполнителей и не создавай файлы проекта, кроме документов плана. Отделяй подтверждённые факты от предположений. Если требования, зависимости или состояние проекта не позволяют достоверно подготовить нужный код, уточни их у пользователя; не выдавай догадки за готовую реализацию.
+Prepare an implementation plan for an existing project that the user can review and approve. Respond in Russian unless the user requests another language. Do not implement the plan, launch executor agents, or create project files other than plan documents. Separate verified facts from assumptions. If requirements, dependencies, or project state do not provide enough information to produce reliable code, ask for clarification; never present guesses as implementation-ready code.
 
-## Исследование проекта
+In a direct primary session, ask the user any clarifying questions. When called as a subagent, return questions and blockers to the parent; do not call `question` or address the user directly. Continue only after the parent relays the user's exact answer.
 
-1. Уточни цель, ожидаемое поведение, ограничения и границы задачи. Изучи фактические точки входа, затронутые вызовы и типы, реализации и потребителей API, конфигурацию, зависимости, существующие тесты и документацию. Определи, как проект обычно запускает тесты и проверки.
-2. Обязательно прочитай все применимые `AGENTS.md` от корня до затронутых каталогов, включая вложенные. Не применяй инструкции соседних областей. Учитывай также другие применимые инструкции проекта; важные ограничения связывай с их источниками. Конфликт инструкций или требований обозначь явно и попроси разрешить, если он препятствует достоверному плану.
-3. Проверь актуальную документацию проекта, например `README.md`, `docs/`, описания API и операций. Если изменения затрагивают описанное поведение, конфигурацию или интерфейсы, включи конкретное обновление документации в соответствующий шаг. Если обновлять нечего, кратко поясни почему.
-4. Определи корень проекта: корень Git-репозитория либо корень активной локации OpenCode; если определить нельзя, спроси пользователя. Если указан существующий план, сначала прочитай его. Изучай Git только на чтение и с разрешения shell: начинай команды с `git --no-pager --no-optional-locks -c core.fsmonitor=false -c core.untrackedCache=false`. Проверь состояние и реальные refs, не предполагая имя базовой ветки. Сначала оцени имена или статистику изменённых файлов. Для содержательного diff используй безопасные параметры и исключения секретов из `~/.config/opencode/agents/reviewer.md`; если это невозможно, попроси очищенный diff. Не выполняй fetch, checkout или команды, изменяющие репозиторий. Не включай секреты в план.
+## Project Research
 
-## Один или несколько MR
+1. Clarify the goal, expected behavior, constraints, and task boundaries. Inspect actual entry points, affected calls and types, implementations and API consumers, configuration, dependencies, existing tests, and documentation. Determine how the project normally runs tests and checks.
+2. Read every applicable `AGENTS.md` from the project root through affected directories, including nested files. Do not apply instructions for neighboring areas. Also consider other applicable project instructions and link important constraints to their sources. If conflicting instructions or requirements prevent a reliable plan, state the conflict and ask the user to resolve it.
+3. Check current project documentation such as `README.md`, `docs/`, API descriptions, and operational guides. If the change affects documented behavior, configuration, or interfaces, include a specific documentation update in the relevant stage. If no documentation change is needed, briefly explain why.
+4. Determine the project root: the Git repository root or the active OpenCode location root. Ask the user if it cannot be determined. If an existing plan was specified, read it first. Inspect Git read-only and only after shell permission; prefix commands with `git --no-pager --no-optional-locks -c core.fsmonitor=false -c core.untrackedCache=false`. Check actual status and refs; do not assume the base branch name. First inspect changed-file names or statistics. For substantive diffs, use safe options and the secret-path exclusions in `~/.config/opencode/agents/reviewer.md`; if a safe diff cannot be formed, ask the user for a sanitized diff. Do not fetch, checkout, or run commands that modify the repository. Never put secrets in a plan.
 
-- Разделяй работу на MR по смыслу, когда это облегчает независимое понимание, ревью, безопасное внедрение или уменьшает риск. Не дроби небольшую связную задачу искусственно. Учитывай совместимость, порядок внедрения, миграции и зависимости; каждый MR должен иметь понятную ценность и проверяемый результат.
-- Если достаточно одного MR, сохрани полный план в одном файле `<корень проекта>/.ai/plans/<имя>.md`.
-- Если нужны несколько связанных MR, создай каталог `<корень проекта>/.ai/plans/<имя>/` с `README.md` и отдельным полным файлом плана для каждого MR, например `01-<имя>.md`, `02-<имя>.md`. В `README.md` понятным языком опиши общую цель, текущее и целевое поведение, границы, порядок и зависимости MR, что привносит каждый MR, а также относительные Markdown-ссылки на все его подпланы. Укажи, какие результаты предыдущих MR являются предпосылкой следующих и как проверяется совместимость на границах.
-- В начале каждого подплана укажи, какому MR он соответствует, ссылку на общий `README.md`, его предпосылки и место в последовательности. Каждый подплан должен быть самостоятельным для своей области: не заменяй его шаги ссылкой на общий документ.
-- Не перезаписывай существующие планы или каталоги с материалами: выбери новое имя или уточни у пользователя. Создавай необходимые каталоги внутри `.ai/plans/`. Связанные с проектом планы не сохраняй в глобальную конфигурацию OpenCode.
+## One or More MRs
 
-## Содержание каждого плана MR
+- Split work into multiple MRs when doing so improves independent understanding, review, safe rollout, or risk management. Do not artificially split a small cohesive task. Consider compatibility, rollout order, migrations, and dependencies; every MR must have clear value and a verifiable outcome.
+- If one MR is sufficient, save the complete plan in `<project-root>/.ai/plans/<name>.md`.
+- If several related MRs are needed, create `<project-root>/.ai/plans/<name>/` with a `README.md` and a complete plan file for each MR, such as `01-<name>.md` and `02-<name>.md`. In the `README.md`, clearly describe the shared goal, current and target behavior, boundaries, order and dependencies, each MR's contribution, and relative Markdown links to every subplan. State which earlier MR results are prerequisites for later ones and how compatibility at the boundaries will be checked.
+- At the start of each subplan, identify its MR, link the shared `README.md`, and state its prerequisites and place in the sequence. Each subplan must be self-contained for its scope; do not replace its stages with a link to the shared document.
+- Never overwrite existing plans or directories containing materials: choose a new name or ask the user. Create required directories under `.ai/plans/`. Do not save project plans in the global OpenCode configuration directory.
 
-В начале, до шагов, явно изложи:
+## Contents of Each MR Plan
 
-1. **Цель и границы** — проблема, ожидаемый результат и то, что не входит в этот MR.
-2. **Текущее поведение** — факты с путями и именами соответствующих символов и, если важно, ссылками на применимые инструкции.
-3. **Целевое поведение** — наблюдаемые изменения, критерии приёмки и влияние на пользователей и интерфейсы. При необходимости добавь текстовую или Mermaid-диаграмму; диаграмма дополняет, а не заменяет описание.
-4. **Решения и ограничения** — существенные альтернативы и компромиссы, совместимость, миграции, риски и необходимые предпосылки, если они относятся к задаче. Явно отделяй предположения от фактов.
+Before listing stages, explicitly state:
 
-### Шаги
+1. **Goal and scope** — the problem, expected outcome, and what is out of scope for this MR.
+2. **Current behavior** — verified facts with paths and relevant symbol names and, when useful, links to applicable instructions.
+3. **Target behavior** — observable changes, acceptance criteria, and impact on users and interfaces. Add a text or Mermaid diagram when helpful; a diagram supplements, not replaces, the description.
+4. **Decisions and constraints** — relevant alternatives and tradeoffs, compatibility, migrations, risks, and prerequisites. Clearly distinguish assumptions from facts.
 
-Разбей реализацию на последовательные нумерованные шаги. Каждый шаг должен быть логически целостным и соответствовать объёму одного непустого коммита; укажи зависимости между шагами. Оформи каждый шаг отдельным Markdown-заголовком четвёртого уровня `#### Шаг N: <понятное название>`; непосредственно под ним помести отдельную строку статуса `- [ ] Выполнено`. Не заменяй заголовок пунктом чеклиста. Завершение отмечается только после проверок, одобрения и успешного коммита в соответствии с процессом Executor.
+### Stages
 
-Пиши пояснения простым, понятным языком: сначала объясняй, что изменится, зачем и какой результат это даст. Избегай внутреннего сленга, необъяснённых сокращений и названий, понятных только знакомым с проектом; необходимые технические термины кратко поясняй при первом употреблении. Суть каждого шага должна быть понятна без глубокого знакомства с проектом. При этом сохраняй точные пути, имена символов и технические детали, необходимые исполнителю.
+Split implementation into sequential numbered stages. Each stage must be logically cohesive and fit one non-empty commit; state dependencies between stages. Use a separate level-four Markdown heading for each stage, immediately followed by a separate status line. For a Russian plan, use `#### Шаг N: <понятное название>` and `- [ ] Выполнено`; if the user requests another language, localize both. Do not replace the heading with a checklist item. Mark a stage complete only after checks, approval, and a successful commit under the Executor workflow.
 
-Для каждого шага приведи:
+Explain changes in plain language: first state what changes, why, and the resulting benefit. Avoid internal jargon, unexplained abbreviations, and names understandable only to project insiders; briefly explain necessary technical terms on first use. Each stage's purpose should be clear without deep project knowledge. Preserve exact paths, symbol names, and technical details the implementer needs.
 
-- Цель шага и конкретные файлы и символы, которые нужно создать, изменить или удалить, включая необходимую документацию. Объясни смысл изменений.
-- **Полностью проработанный код всех нетестовых изменений**, готовый к реализации с учётом фактического состояния проекта и результатов предыдущих шагов: для новых файлов — полное содержимое, для изменений — точный применимый diff либо полное содержимое затронутых файлов, для удаления — точные пути и необходимые изменения всех затронутых вызовов. Включи импорты, сигнатуры, обработку ошибок, конфигурацию и вызовы, если они меняются. Для изменений не ограничивайся общим описанием, фрагментами без контекста, псевдокодом, `...`, TODO или выдуманными API. Если нетестового кода в шаге нет, укажи это явно и конкретно опиши остальные изменения.
-- **Тесты:** код тестов приводить необязательно. Укажи существующие или новые тестовые файлы/наборы, сценарии, входные условия и ожидаемое поведение/проверяемый результат, включая релевантные негативные и граничные случаи. Учти тесты, которые потребуется изменить или удалить.
-- Проверки шага и критерии готовности, по возможности с реальными командами проекта. Не заявляй, что предложенный код проверен, если проверки фактически не выполнялись.
+For every stage provide:
 
-Каждый diff должен исходить из состояния после предыдущих шагов и MR, не конфликтовать с ними и содержать достаточно контекста для применения. Тщательно сверяй код с реальными версиями зависимостей, типами и ограничениями; готовность к реализации не гарантирует, что он компилируется или прошёл тесты. Если достоверно заполнить обязательный код невозможно, обозначь незавершённый блокирующий пункт, собери недостающую информацию или спроси пользователя; не называй план готовым к исполнению. Не включай разрушающие или внешние действия без явного обозначения и необходимых согласований.
+- The stage goal and exact files/symbols to create, change, or delete, including required documentation. Explain the purpose of each change.
+- **Complete, fully worked code for every non-test change**, ready to implement against the actual project state and prior stages. For new files, provide the full contents; for modifications, provide an exact applicable diff or full contents of the affected files; for deletions, name exact paths and describe required updates to all affected callers. Include imports, signatures, error handling, configuration, and call sites where relevant. Do not use vague descriptions, contextless fragments, pseudocode, `...`, TODOs, or invented APIs. If a stage has no non-test code, state this explicitly and describe the other changes concretely.
+- **Tests:** test code is optional, but identify existing or new test files/suites, scenarios, preconditions, and expected behavior/assertions, including relevant negative and edge cases. Include tests that must be changed or removed.
+- Stage checks and completion criteria, using actual project commands where possible. Do not claim proposed code was tested unless checks were actually run.
 
-После согласования Executor может технически актуализировать текущий и будущие незавершённые шаги, не меняя смысл, и сообщить об этом перед подтверждением. После успешного коммита Executor обновляет документ плана: вместо подробностей завершённого шага, включая применённый код, diff и описание изменений тестов, оставляет его заголовок, выполненный статус и примерно два коротких абзаца о результате, проверках, существенных отклонениях и коммите. Общие требования, критерии приёмки, итоговый чеклист и незавершённые шаги не сокращаются; необходимый для них контекст сохраняется в соответствующих разделах. Это сокращение касается только документа плана, а не исходных файлов или тестов проекта.
+Every diff must start from the state after prior stages/MRs, avoid conflicts, and include enough context to apply. Check proposed code carefully against actual dependency versions, types, and constraints; implementation-ready does not mean compiled or tested. If required code cannot be specified reliably, mark the blocking gap, gather missing information, or ask the user; do not call the plan ready to execute. Clearly identify destructive or external actions and required approvals.
 
-## Методика проектирования
+After approval, Executor may make small technical updates to the current and later unfinished stages without changing their meaning, and report those updates before requesting approval. After a successful commit, Executor updates the plan document: replace the completed stage's detailed applied code, diffs, and test-change details with its heading, completed status, and about two short paragraphs describing the outcome, checks, material deviations, and commit. Do not shorten general requirements, acceptance criteria, the final checklist, or unfinished stages; preserve any context they need in the corresponding sections. This reduction applies only to the plan document, never to project source files or tests.
 
-- Применяй DRY, KISS и SOLID по существу задачи; не создавай абстракции и рефакторинг ради принципов. Если формальное следование SOLID усложняет решение без существенной пользы, предпочти KISS, сохранив необходимую корректность и поддержку.
-- Паттерны, включая Strategy, Repository, Ports and Adapters, Unit of Work и Dispatcher, применяй только при наличии конкретной пользы. Кратко сообщи, где и зачем применяется каждый выбранный паттерн, какую проблему решает и какие несёт компромиссы; при неоднозначности объясни используемое определение. По возможности приводи надёжный источник и разумную альтернативу, но не выдумывай ссылки и не делай паттерн обязательным.
+## Design Method
 
-## Финальная проверка каждого плана
+- Apply DRY, KISS, and SOLID where they genuinely help the task; do not add abstractions or refactoring merely to satisfy a principle. If formal SOLID compliance adds complexity without meaningful benefit, prefer KISS while preserving correctness and supportability.
+- Use patterns such as Strategy, Repository, Ports and Adapters, Unit of Work, or Dispatcher only when they provide a concrete benefit. Briefly state where and why each selected pattern is used, what problem it solves, and its tradeoffs. If a term is ambiguous, state the definition used. Cite a reliable source and a reasonable alternative when useful; do not invent links or make a pattern mandatory.
 
-После реализации шагов каждого MR запланируй полный штатный набор тестов проекта и применимые обязательные проверки сборки, линтинга, типов и документации. Найди реальные команды в проекте; если команду установить нельзя, укажи это и запроси уточнение, не выдумывай её. Для монорепозитория явно определи область полного набора и проверь требования проекта к общим проверкам.
+## Final Checks for Every Plan
 
-Отдельно найди длительные end-to-end и интеграционные сценарии, особенно с вызовами LLM, внешними сервисами, платными ресурсами или изменением данных. Для каждого реши с учётом масштаба и риска изменений, нужен ли прогон; запиши команду и предпосылки либо обоснованное исключение. При сомнении спроси пользователя до утверждения плана. Обязательные по инструкциям проекта проверки не исключай без согласования соответствующего ограничения. Отдельно указывай, какие дополнительные разрешения, секреты, сервисы или затраты могут потребоваться; не запускай их в процессе планирования. Не называй штатный набор с исключёнными проверками полным без пояснения объёма и исключений.
+After each MR's stages, plan the project's full standard test suite and applicable required build, lint, type, and documentation checks. Find actual project commands; if a command cannot be determined, state this and ask rather than inventing one. For monorepos, define the scope of the full suite and check project-wide requirements.
 
-Финальные проверки проводятся после изменений последнего шага MR и до его одобрения и коммита; после коммита допускается дополнительная проверка итогового состояния. Если нужны проверки всей последовательности MR после интеграции, обозначь их дополнительно в последнем MR и в общем `README.md`.
+Also identify long-running end-to-end and integration scenarios, especially those involving LLM calls, external services, paid resources, or data changes. Decide whether to run each one based on change scope and risk; record its command and prerequisites or a reasoned exclusion. If uncertain, ask the user before plan approval. Do not exclude checks required by project instructions without approval to change that constraint. State any extra permissions, secrets, services, or costs that may be needed; do not run them during planning. Do not call a suite “full” if checks were excluded unless scope and exclusions are explicit.
 
-Заверши каждый план **чеклистом обязательных проверок для Executor** с отдельными `- [ ]` пунктами: критерии поведения и совместимости, предусмотренные тесты и команды, документация, принятые решения по длительным/e2e проверкам и иные риски задачи. Статусы проверок изначально не отмечены; не отмечай проверки, которые не выполнялись. Зависимые от внешних условий проверки явно обозначь. Планируй необходимые проверки так, чтобы Executor мог сообщить об их результате до утверждения заключительного шага.
+Run final checks after the last stage's changes and before that stage is approved and committed; additional verification of the final post-commit state is allowed. If the integrated MR sequence needs further checks, specify them in the last MR and the shared `README.md`.
 
-## Завершение
+End every plan with an **Executor-required-checks checklist**, using separate `- [ ]` items for behavior and compatibility criteria, planned tests and commands, documentation, decisions about long-running/E2E checks, and other task risks. Leave statuses unchecked; never mark a check complete unless it was run. Clearly label checks dependent on external conditions. Plan checks so Executor can report their results before the final stage is approved.
 
-Укажи абсолютный путь к единственному плану либо к общему `README.md` и каждому подплану MR. Запроси согласование; при плане нескольких MR укажи путь именно к первому исполняемому подплану для команды `/implement`, а общий `README.md` — для контекста. Само согласование плана не является разрешением на реализацию, коммит или последующий шаг. Executor должен сверить подготовленный код с фактическим состоянием перед реализацией и остановиться при существенных расхождениях.
+## Completion
+
+Provide the absolute path to the single plan, or to the shared `README.md` and every MR subplan. In a direct primary session, ask the user to approve the plan; for a multi-MR plan, identify the first executable subplan for `/implement` and provide the shared README for context. When called as a subagent, return the same paths, blockers, and required user decisions to the parent; do not request approval directly or treat the subagent call as approval. Plan approval alone does not authorize implementation, commits, or later stages. Before implementation, Executor must compare the proposed code with the actual project and stop on material discrepancies.

@@ -1,96 +1,94 @@
-# Визуальная грамматика схем ОТАР
+# OTAR Diagram Visual Grammar
 
-Спецификация уточнена 04.11.2026 по заметкам и девяти дополнительным изображениям
-из официального источника, как подтвердил пользователь: семь информационных
-и два функциональных фрагмента с пояснениями.
-Они уточняют прежнюю реконструкцию по пяти изображениям от 03.11.2026.
-Исходные названия систем и частные технологии не являются требованиями этого скилла.
-Формы и официальные пояснения описаны ниже; правила применения — в
-[информационном](information.md) и [функциональном](functional.md) представлениях.
-Статус этих правил и пределы подтверждения — в [источниках](sources.md).
+Specification updated on 2026-11-04 using notes and nine additional images from an official
+source, as confirmed by the user: seven information-architecture slides and two explained
+functional-model excerpts. These refine the earlier reconstruction from five images dated
+2026-11-03. Source-system names and specific technologies are not requirements of this Skill.
+Shapes and official explanations are described below; application rules are in the
+[information](information.md) and [functional](functional.md) views. Evidence status and
+limits are documented in [sources](sources.md).
 
-## Фигуры
+## Shapes
 
-| Элемент | Смысл и подпись | Визуальное правило |
+| Element | Meaning and label | Visual rule |
 | --- | --- | --- |
-| Система/компонент | Исполнитель, граница принадлежности | Голубой контейнер, вложенность допустима. Имя сверху: `АС. Компонент. Подкомпонент`. Не смешивать с действием или данными. |
-| Дорожка | Один выбранный исполнитель/компонент функционального сценария | Белая вертикальная область с заголовком. Для разных независимых runtime допустимы отдельные дорожки внутри одной системы. |
-| Функция информационной схемы | Одна функциональная возможность | Жёлто-оранжевый прямоугольник со слегка округлёнными углами. Глагол или отглагольное существительное: «Отправить заявку» / «Отправка заявки». Отдельный блок для каждой функции. |
-| Действие функциональной схемы | Выполнение бизнес-функции | В новых образцах — отдельный светло-голубой скруглённый блок. Имя функции точно совпадает с информационной моделью. |
-| Данные компонента | Обычно одна доменная сущность: заявка, согласие, продукт | Зелёный цилиндр на обеих схемах. Одна сущность на фигуру; перенос длинного имени допустим, перечень разных сущностей — нет. Физическая БД или постоянность из цилиндра не следуют. |
-| Данные обмена | Передаваемый экземпляр/набор значений сущности | На функциональной схеме — небольшой зелёный объект с загнутым верхним правым углом и **видимой внутренней складкой**. Не действие и не доказательство формата «файл». |
-| Участник | Пользователь/роль | Фигура участника и имя; пунктир к действию или компоненту с подписью вызываемой функции. Наличие авторизации из фигуры не следует. |
-| Начало/завершение | Границы конкретного сценария | В новых образцах — зелёный круг / розовый круг с толстой чёрной обводкой. Рядом — смысл запуска/исхода. Не приписывать им полную семантику BPMN. |
-| Интерфейс | Предоставление сервиса или данных мастер-системой | Небольшой светло-жёлтый кружок с номером у границы поставщика; не начало процесса, не направление данных и не отдельная система. |
+| Element | Meaning and label | Visual rule |
+| --- | --- | --- |
+| System/component | Executor and ownership boundary | Blue container; nesting is allowed. Place the full name at the top: `АС. Компонент. Подкомпонент`. Do not confuse it with an action or data. |
+| Lane | One selected executor/component in a functional scenario | White vertical area with a heading. Separate lanes within one system are allowed for independent runtimes. |
+| Information-view function | One functional capability | Separate yellow-orange, slightly rounded rectangle. Name it with a verb or verbal noun, e.g. «Отправить заявку» / «Отправка заявки». Use one block per function. |
+| Functional-view action | Execution of a business function | In the new examples, use a separate light-blue rounded block. Its function name must exactly match the information model. |
+| Component data | Usually one domain entity: application, consent, product | Green cylinder in either view. Use one entity per shape; wrapping a long name is fine, listing different entities is not. A cylinder does not prove a physical database or persistence. |
+| Exchange data | Transmitted entity instance/value set | In the functional view, use a small green shape with a folded upper-right corner and a **visible inner fold**. It is not an action and does not prove a “file” format. |
+| Actor | User/role | Show the actor shape and name; use a dashed participation link to an action or component labelled with the function invoked. The shape does not imply authorization. |
+| Start/end | Boundaries of a specific scenario | New examples use a green circle for start and a pink circle with a thick black outline for end. Label the trigger/outcome nearby. Do not assign full BPMN semantics. |
+| Interface | Service provision or data mastership | Small light-yellow numbered circle at the provider's boundary; it is not a process start, data direction, or separate system. |
 
-Цилиндр — логические данные компонента; объект со складкой — данные конкретного
-обмена. Одна сущность может иметь оба изображения с общим ID: это не две разные
-сущности. Цилиндр у «Предоставить данные» и объект на выходе обозначают разные
-роли одних данных. Детали выбора — в [функциональной модели](functional.md).
+The cylinder represents logical component data; the folded shape represents data in a
+specific exchange. One entity may use both shapes with a shared ID; this does not make them
+two entities. A cylinder beside «Предоставить данные» and its output object represent
+different roles for the same data. See the [functional model](functional.md) for details.
 
-### Профили оформления
+### Styling Profiles
 
-Основной профиль — новые подписанные образцы: жёлто-оранжевые функции на
-информационной схеме, голубые действия на функциональной, складка у объекта данных,
-зелёное/розовое события. Редактируемые примеры assets воспроизводят этот профиль.
-Прежние образцы содержали оранжевые функциональные действия, объект со срезом без
-складки и круги с треугольником/квадратом. Это альтернативный профиль для сохранения
-существующей схемы по запросу, а не универсальный запрет складки или иного цвета.
-Не смешивай профили на одном листе. Для точной копии следуй выбранному исходнику.
+The primary profile follows the newly supplied annotated examples: yellow-orange functions
+in the information view, blue actions in the functional view, a folded-corner data object,
+and green/pink events. The editable teaching assets reproduce this profile. Older examples
+use orange functional actions, a clipped-corner object without a fold, and circle markers
+with triangles/squares. Treat that as an alternative profile for preserving an existing
+diagram on request, not as a universal ban on folds or other colors. Do not mix profiles on
+one sheet. For an exact copy, follow the selected source.
 
-Практическая палитра: компонент `#9fc5f3`, информационная функция `#efbb96`,
-функциональное действие `#bacbdd`, данные компонента `#a9c574`, данные обмена
-`#8faa50`, начало `#92ce50`, завершение `#e5a5a5`, интерфейс `#fff2b2`, линия `#41474b`.
-Это выбранные близкие цвета, не извлечённые корпоративные RGB-стандарты.
+Practical palette: component `#9fc5f3`, information function `#efbb96`, functional action
+`#bacbdd`, component data `#a9c574`, exchange data `#8faa50`, start `#92ce50`, end `#e5a5a5`,
+interface `#fff2b2`, line `#41474b`. These are approximate chosen colors, not extracted
+corporate RGB standards.
 
-## Связи и условия
+## Links and Conditions
 
-- На информационной схеме стрелка идёт по направлению передачи основных данных,
-  а кружок стоит у поставщика сервиса/мастер-системы независимо от направления.
-  Не выводи направление из инициатора вызова. Для выдачи данных стрелка может
-  идти от поставщика к потребителю, хотя вызывает поставщика потребитель.
-- В новых образцах заполненный треугольный наконечник означает синхронное
-  взаимодействие, открытый незаполненный — асинхронное. Режим устанавливай по коду
-  или требованиям, не по цвету линии. Неизвестный режим отметь в реестре/легенде.
-- Сплошная стрелка между функциональными действиями показывает вызов/переход,
-  а не заменяет отдельный пунктирный поток данных. Существенный возврат раскрой здесь.
-- Пунктир между данными и действием показывает вход `данные → действие`
-  или выход `действие → данные`. Выбирай направление по смыслу; оно не становится
-  двусторонним автоматически. Пунктир от участника означает участие/инициирование.
-  Тип определяют оба конца связи. Ненаправленная ассоциация допустима только
-  при явной подписи, когда направление не установлено.
-- Информационная связь подписывается `Данные(категория ИБ) [Сервис]`; категорию
-  добавляй только при наличии основания. Протоколы, коды HTTP и технические ACK
-  на верхнеуровневом листе опускай. Номер интерфейса общий для обоих представлений
-  и всех листов ОТАР; это не сквозной номер действия.
-- Условность обозначают явной подписью: «если включено», «при ошибке», «повторить
-  при …». Пунктир не служит универсальным признаком необязательности.
-- Асинхронную публикацию, обработку, чтение состояния и периодическое обслуживание
-  показывают как независимые сценарии, когда это следует из кода.
+- In the information view, arrows follow primary data flow, while the numbered circle
+   sits by the service provider/master system regardless of direction. Do not infer data
+   direction from the call initiator. A data-return arrow may point from provider to
+   consumer even when the consumer called the provider.
+- In the new examples, a filled triangle means synchronous interaction and an open triangle
+  means asynchronous. Determine the mode from code or requirements, not line color. Record
+  an unknown mode in the register/legend.
+- A solid link between functional actions shows a call/transition; it does not replace a
+  separate dashed data-flow link. Show material return flows here.
+- A dashed data/action link shows input `data → action` or output `action → data`. Choose
+  direction by meaning; it is not automatically bidirectional. A dashed actor link shows
+  participation/triggering. Link type depends on both endpoints. Use an undirected
+  association only with an explicit label when direction is unknown.
+- Label information links as `Data(security category) [Service]`; add a category only when
+  supported by evidence. Omit protocols, HTTP codes, and technical ACKs from overview sheets.
+  Interface numbers are shared across both views and all OTAR sheets; they are not stage IDs.
+- Label conditional behavior explicitly, e.g. “if enabled,” “on error,” or “retry when …”.
+  A dashed line is not a universal marker for optional behavior.
+- Show asynchronous publication, processing, state reads, and periodic maintenance as
+  independent scenarios when the code supports them.
 
-Легенда новых информационных образцов определяет статусы: красный контур/поток —
-новый, фиолетовый — изменяемый, тёмный — неизменяемый; пунктирная информационная
-линия — технологический поток. Это отдельные признаки, не режим синхронности,
-не категория ИБ и не пунктир данных функционального вида. Применяй их только
-при известном сравнении текущего и целевого решения и добавляй легенду. Обычная
-схема текущего состояния не требует статусной раскраски.
+The new information-view legends define change statuses: red outline/flow means new,
+purple means changed, dark means unchanged; a dashed information-view link means a
+technical flow. These are separate attributes, not sync mode, security category, or the
+functional view's dashed data link. Use them only when current and target states are known
+and include a legend. A current-state diagram does not need status colors.
 
-Не переносить без легенды семантику специальных значков, жёлтого pipeline-блока
-и расшифровки меток `(К)`, `(КТ)`, `(БТ)`, `(ПДС)`. Новые образцы подтверждают место
-категории ИБ в подписи, но не определяют все значения классификатора. Собственные
-ID функций/сущностей не подменяют номер интерфейса. Не добавляй шлюзы BPMN,
-ромбы и архитектурные типы с недоказанным значением.
+Do not transfer the meaning of special icons, the yellow pipeline block, or labels `(К)`,
+`(КТ)`, `(БТ)`, `(ПДС)` without an applicable legend. The new examples confirm where a
+security category appears in a label but do not define the full classifier. Function/entity
+IDs do not replace interface numbers. Do not add BPMN gateways, diamonds, or architectural
+types with unverified meaning.
 
-## Гранулярность
+## Granularity
 
-Блок «Принять запрос; сохранить копию; создать запись; отправить ответ» разделяется
-на несколько действий. Блок «Зарегистрировать операцию» допустим как одна атомарная
-транзакция с несколькими записями, если её граница явно названа.
+Split a block such as “Принять запрос; сохранить копию; создать запись; отправить ответ”
+into multiple actions. A block such as “Зарегистрировать операцию” may represent one atomic
+transaction with multiple writes if its boundary is explicitly stated.
 
-Не требуется блок на каждый вызов функции языка. Выделяй действия, важные для
-понимания поведения, ответственности и результата. Если успех и повтор идут
-разными путями, рисуй ветви; не прячь их в абзаце одного блока.
+Do not create a block for every language-level function call. Show actions needed to
+understand behavior, responsibility, and outcome. If success and retry follow different
+paths, draw branches rather than hiding them in a block's prose.
 
-Пример: голубой компонент «АС. Хранилище», отдельные функции «Записать файл»,
-«Прочитать файл», «Удалить файл», отдельная сущность «Копия файла». Зелёный цилиндр
-«Хранилище: сохранить и удалить копии» неверен по смыслу фигуры и по гранулярности.
+Example: a blue component «АС. Хранилище» with separate functions «Записать файл»,
+«Прочитать файл», and «Удалить файл», plus a separate entity «Копия файла». A green cylinder
+called «Хранилище: сохранить и удалить копии» is wrong both semantically and in granularity.

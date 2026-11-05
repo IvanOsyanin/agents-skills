@@ -1,14 +1,14 @@
 ---
 name: code-review
 description: >-
-  Perform structured code review for branches, diffs, pull requests, merge requests, commits, and uncommitted changes. Use when the user asks to review code, review a branch before merge, inspect a PR/MR, verify reviewer comments, find bugs, security/auth/RBAC risks, regressions, missing tests, API contract problems, migration issues, deployment risks, PII/data exposure, SOLID/DRY violations, or unclear implementation quality. Russian triggers: код ревью, ревью кода, сделай код ревью, проверь код, проверка кода, ревью ветки, проверь ветку, проверь PR, проверь diff, ревью перед мержем, проверь изменения, посмотри код.
+  Perform structured code review for branches, diffs, pull requests, merge requests, commits, and uncommitted changes. Use for code-review requests in any language, including reviews for bugs, security/auth/RBAC risks, regressions, missing tests, API contracts, migrations, deployment risks, PII exposure, SOLID/DRY concerns, or implementation quality.
 ---
 
 # Code Review
 
 Use this skill when reviewing code changes. Focus on real defects, risks, regressions, missing tests, and unclear assumptions. Do not summarize the diff instead of reviewing it.
 
-Compatible with **Cursor** and **Codex** — use the citation format that matches the environment you are running in (see Code Citations).
+Compatible with **Cursor**, **Codex**, and terminal-based agents such as **OpenCode** — use the citation format that matches the environment you are running in (see Code Citations).
 
 ## Output Language
 
@@ -20,7 +20,7 @@ Switch to English when any of these is true:
 - Repository docs (`README`, `AGENTS.md`, PR description) are clearly English-only
 - The user explicitly asks for English output
 
-Keep severity markers (`🔴 Высокий` / `🔴 High`, etc.) aligned with the chosen language.
+Keep severity markers aligned with the output language: use `🔴 High`, `🟡 Medium`, and `⚪ Low` in English; use `🔴 Высокий`, `🟡 Средний`, and `⚪ Низкий` in Russian.
 
 ## Review Target
 
@@ -107,9 +107,9 @@ Check changed code for concrete design problems in the diff. Do not give generic
 
 **Severity for design findings**
 
-- Usually `🟡 Средний` when duplication or SRP violation likely causes bugs or makes change unsafe
-- Usually `⚪ Низкий` for refactor opportunities without near-term risk
-- Use `🔴 Высокий` only when a design flaw directly threatens production correctness or security
+- Usually **Medium** (Russian: `Средний`) when duplication or an SRP violation is likely to cause bugs or make a change unsafe.
+- Usually **Low** (Russian: `Низкий`) for refactoring opportunities without near-term risk.
+- Use **High** (Russian: `Высокий`) only when a design flaw directly threatens production correctness or security.
 
 ## Verification
 
@@ -141,7 +141,7 @@ When a risk is plausible but not proven, phrase it as a question or verification
 
 Always include file path and line numbers. Do not cite code without a file and line reference.
 
-Pick **one** format based on the environment you are running in. Never mix both formats in the same finding.
+Pick **one** format based on the environment you are running in. Never mix formats in the same finding.
 
 ### Cursor
 
@@ -161,7 +161,7 @@ Do not use absolute filesystem paths unless the user explicitly needs them.
 Use a navigable markdown link plus a fenced code block. Prefer absolute paths when the workspace root is known:
 
 ````markdown
-**Проблемный участок кода**
+**Problematic code**
 
 [file.py](/absolute/path/to/file.py:42):
 
@@ -173,31 +173,30 @@ def risky_call():
 
 Use repository-relative paths inside the code fence when absolute paths are unavailable. Also include `file.py:42` inline in prose when helpful.
 
+### OpenCode terminal
+
+Use a repository-relative `path:line` reference followed by a short, ordinary fenced code snippet. Do not use Cursor-specific line-range fences or assume Codex-style clickable navigation:
+
+````markdown
+**Problematic code**
+
+`src/services/foo.py:42`:
+
+```python
+def risky_call():
+    ...
+```
+````
+
 ## Finding Header Format
 
-Every finding header must start with a severity marker, then the severity text, then a short title. Do not rely on color alone; the severity must be readable from the text as well.
-
-Russian:
-
-```markdown
-**1. 🔴 Высокий - короткий заголовок**
-**2. 🟡 Средний - короткий заголовок**
-**3. ⚪ Низкий - короткий заголовок**
-```
-
-English:
-
-```markdown
-**1. 🔴 High - short title**
-**2. 🟡 Medium - short title**
-**3. ⚪ Low - short title**
-```
+Every finding header must begin with a numbered severity marker, localized severity text, and a short title. Never rely on color alone. Use `🔴 High`, `🟡 Medium`, and `⚪ Low` in English; use `🔴 Высокий`, `🟡 Средний`, and `⚪ Низкий` in Russian.
 
 Use these severity levels:
 
-- High / Высокий — blocker before merge: confirmed serious security issue, data loss, broken deployment, migration breakage, major API regression, or high-confidence production failure.
-- Medium / Средний — meaningful issue or important open question: likely bug, missing verification, risky deployment/config ambiguity, insufficient tests for risky behavior, or behavior that may block merge after confirmation.
-- Low / Низкий — non-blocking observation: low-risk cleanup, small test improvement, or minor maintainability issue.
+- **High / Высокий** — blocker before merge: confirmed serious security issue, data loss, broken deployment, migration breakage, major API regression, or high-confidence production failure.
+- **Medium / Средний** — meaningful issue or important open question: likely bug, missing verification, risky deployment/config ambiguity, insufficient tests for risky behavior, or behavior that may block merge after confirmation.
+- **Low / Низкий** — non-blocking observation: low-risk cleanup, small test improvement, or minor maintainability issue.
 
 Prefer Medium / Средний for open questions that may affect merge, unless the code proves a High / Высокий failure.
 
@@ -205,28 +204,28 @@ Do not use green for finding severity. Reserve green check marks only for explic
 
 ## Required Finding Structure
 
-For each issue use this structure (adapt section titles to the output language). Use the code citation format from Code Citations that matches your environment.
+For each finding, include a code citation, what is wrong, the likely impact, and how to improve it. Localize section titles to the output language. For Russian, use `Проблемный участок кода`, `Что сделано не так`, `К чему может привести`, and `Как сделать лучше`. Use the citation format that matches the current environment.
 
 **Cursor example:**
 
 ````markdown
-**1. 🔴 Высокий - короткий заголовок**
+**1. 🔴 High - short title**
 
-**Проблемный участок кода**
+**Problematic code**
 
 ```12:15:app/services/foo.py
 ...
 ```
 
-**Что сделано не так**
+**What is wrong**
 
 Explain the issue plainly. Assume the reader may not know the project.
 
-**К чему может привести**
+**Likely impact**
 
 Explain realistic impact and failure mode.
 
-**Как сделать лучше**
+**How to improve**
 
 Give concrete remediation or the exact question to ask if the issue depends on external context.
 ````
@@ -234,9 +233,9 @@ Give concrete remediation or the exact question to ask if the issue depends on e
 **Codex example:**
 
 ````markdown
-**1. 🔴 Высокий - короткий заголовок**
+**1. 🔴 High - short title**
 
-**Проблемный участок кода**
+**Problematic code**
 
 [foo.py](/absolute/path/to/app/services/foo.py:12):
 
@@ -244,15 +243,15 @@ Give concrete remediation or the exact question to ask if the issue depends on e
 ...
 ```
 
-**Что сделано не так**
+**What is wrong**
 
 Explain the issue plainly. Assume the reader may not know the project.
 
-**К чему может привести**
+**Likely impact**
 
 Explain realistic impact and failure mode.
 
-**Как сделать лучше**
+**How to improve**
 
 Give concrete remediation or the exact question to ask if the issue depends on external context.
 ````
@@ -263,7 +262,7 @@ English equivalent section titles: **Problematic code**, **What is wrong**, **Li
 
 Return findings first, sorted by severity (highest first). Then add:
 
-- **Что сделано хорошо** / **What looks good** — 1–3 concrete positives when they exist; omit if nothing meaningful to praise
+- **What looks good** (Russian: **Что сделано хорошо**) — 1–3 concrete positives when they exist; omit this section if nothing meaningful merits praise.
 - Open questions, if any remain outside the findings
 - Verification performed
 - Tests not run or residual risk
